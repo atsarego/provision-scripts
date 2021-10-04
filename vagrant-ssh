@@ -5,7 +5,7 @@ Host vagrant-node
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   PasswordAuthentication no
-  IdentityFile /mnt/code/atsarego/provision-scripts-tmp/.vagrant/machines/vagrant-node/virtualbox/private_key
+  IdentityFile .vagrant/machines/vagrant-node/virtualbox/private_key
   IdentitiesOnly yes
   LogLevel FATAL
 
