@@ -1,0 +1,4 @@
+---
+- hosts: node
+  tasks:
+    - include: install-docker.yml

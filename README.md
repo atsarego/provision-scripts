@@ -1,2 +1,2 @@
-# How to ssh
-> ssh -F vagrant-ssh
+# How to ssh to vagrant
+> ssh -F vagrant/vagrant-ssh vagrant-node
