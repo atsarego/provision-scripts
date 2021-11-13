@@ -1,2 +1,8 @@
-[node]
+[docker_nodes]
 vagrant-node
+
+[docker_registry]
+vagrant-node
+
+[docker_registry:vars]
+docker_registry=vagrant-node:5000

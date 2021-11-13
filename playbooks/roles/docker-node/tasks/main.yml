@@ -1,3 +1,4 @@
+---
 - name: Save current user
   set_fact:
     user_id: "{{ ansible_user_id }}"
@@ -20,6 +21,11 @@
 #   apt_repository:
 #     state: present
 #     repo: deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+- name: Disable security for local docker registry
+  become: yes
+  copy:
+    dest: /etc/docker/daemon.json
+    content: "{ \"insecure-registries\":[\"{{ docker_registry }}\"] }"
 - name: Install docker engine
   become: yes
   shell:

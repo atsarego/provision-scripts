@@ -1,4 +1,8 @@
 ---
-- hosts: node
-  tasks:
-    - include: install-docker.yml
+- hosts: docker_nodes
+  roles:
+    - docker-node
+
+- hosts: docker_registry
+  roles:
+    - docker-registry
