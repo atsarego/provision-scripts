@@ -1,0 +1,17 @@
+---
+- name: Install python-pip
+  become: yes
+  package:
+    name: python3-pip
+    state: present
+  when: (do_not_install_base_software is not defined) or (do_not_install_base_software | bool == false)
+- name: Check docker pip module is installed
+  shell:
+    cmd: pip3 list | grep docker || true
+    warn: no
+  register: docker_pip
+- name: Install docker pip module as dependency for docker_image
+  pip:
+    name: docker
+    state: present
+  when: docker_pip.stdout == ""

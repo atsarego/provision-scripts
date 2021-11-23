@@ -1,17 +1,7 @@
 ---
-- name: Install docker dependencies
-  become: yes
-  apt:
-    pkg:
-      - python3-pip
-    update_cache: yes
-- name: Install docker as dependency for docker_image
-  pip:
-    name: docker
-    state: present
 - name: Create docker-registry directory
   file:
-    path: /docker-mounts/docker-registry
+    path: "{{ docker_folder }}/docker-registry"
     state: directory
 - name: Install docker registry
   community.docker.docker_container:
@@ -22,7 +12,7 @@
     published_ports:
       - 5000:5000
     mounts:
-      - source: /docker-mounts/docker-registry
+      - source: "{{ docker_folder }}/docker-registry"
         target: /var/lib/registry
         type: bind
     network_mode: bridge

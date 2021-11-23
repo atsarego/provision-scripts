@@ -1,8 +1,12 @@
-[docker_nodes]
+[vagrantnode]
 vagrant-node
 
-[docker_registry]
-vagrant-node
-
-[docker_registry:vars]
+[vagrantnode:vars]
+docker_folder=/docker-mounts
 docker_registry=vagrant-node:5000
+
+[docker_nodes:children]
+vagrantnode
+
+[docker_registry:children]
+vagrantnode
